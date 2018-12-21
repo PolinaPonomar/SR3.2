@@ -4,8 +4,13 @@ private:
     int x;
     CLASS*y;
 public:
+
     int getX() const {
         return x;
+    }
+
+    CLASS* getY() const {
+        return y;
     }
 
     CLASS(int a) : x(a) {
@@ -27,7 +32,7 @@ public:
     }
 
     ~CLASS() {
-        delete push();
+        delete y;
 
         std::cout << "Деструктор\n";
 
@@ -42,7 +47,12 @@ int main() {
     CLASS*n = new CLASS(a);
     int b = 7;
     n->push(b);
+    //n->getY().push(8);
+    n->getY();
+    std::cout << n->getY() <<std::endl;
+    *n->getY()->push(8);
     delete n;
+    //.n.getY();
 
     return 0;
 }
