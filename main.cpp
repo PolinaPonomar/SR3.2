@@ -4,6 +4,9 @@ private:
     int x;
     CLASS*y;
 public:
+    int getX() const {
+        return x;
+    }
 
     CLASS(int a) : x(a) {
         y = nullptr;
@@ -16,15 +19,17 @@ public:
         CLASS z(a);
         y = &z;
         std::cout << "PUSH:\n";
-        std::cout << " X = " << x << "; адрес класса = " << y <<std::endl;
+        std::cout << " X = " << z.getX() << "; адрес класса = " << y <<std::endl;
 
 
 
     }
 
     ~CLASS() {
-        
+
         std::cout << "Деструктор\n";
+
+
     }
 
 
