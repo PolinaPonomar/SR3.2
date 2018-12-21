@@ -15,17 +15,19 @@ public:
 
     }
 
-    void push (int a) {
-        CLASS z(a);
-        y = &z;
+    CLASS* push (int a) {
+        CLASS*z = new CLASS(a);
+        y = z;
         std::cout << "PUSH:\n";
-        std::cout << " X = " << z.getX() << "; адрес класса = " << y <<std::endl;
+        std::cout << " X = " << z->getX() << "; адрес класса = " << y <<std::endl;
+        return z;
 
 
 
     }
 
     ~CLASS() {
+        delete push();
 
         std::cout << "Деструктор\n";
 
@@ -36,12 +38,11 @@ public:
 };
 
 int main() {
-    int*a = new int;
-    *a = 6;
-    CLASS n(*a);
-    int*b = new int;
-    *b = 7;
-    n.push(*b);
+    int a = 6;
+    CLASS*n = new CLASS(a);
+    int b = 7;
+    n->push(b);
+    delete n;
 
     return 0;
 }
